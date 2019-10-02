@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <p>add_website.html</p>
+
+    <form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend> Add Website </legend>
+					{{ form.name.label(class="form-control-label") }}
+					{% if form.name.errors %}
+						{{ form.name(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.name.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.name(class="form-control form-control-lg") }}
+					{% endif %}
+					<br>
+					{{ form.url.label(class="form-control-label") }}
+					{% if form.url.errors %}
+						{{ form.url(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.url.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.url(class="form-control form-control-lg") }}
+					{% endif %}
+
+					<br>
+
+
+					{{ form.verification_doc_url.label(class="form-control-label") }}
+					{% if form.verification_doc_url.errors %}
+						{{ form.verification_doc_url(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.verification_doc_url.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.verification_doc_url(class="form-control form-control-lg") }}
+					{% endif %}
+			</fieldset>
+			<div class="form-group">
+					{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>
+
+		<div class="border-top pt-3">
+		<small class="text-muted">
+			New User? <a class="ml-2" href="{{ url_for('register') }}"> Click to Register! </a>
+		</small>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <p>index.html</p>
+
+
+    {% if websites %}
+	    <table style="width:100%">
+		  <tr>
+		    <th>Name</th>
+		    <th>Status</th> 
+		    <th>Admin</th>
+		  </tr>
+
+		  {% for website in websites %}
+		  	<tr>
+		  	<td>{{ website.name }}</td>
+		    <td>{{ website.http_status_code }}</td>
+		    <td>{{ website.admin.name }}</td>
+			</tr>
+		  {% endfor %}
+		</table>
+	{% endif %}
+{% endblock %}

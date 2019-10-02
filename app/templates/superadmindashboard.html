@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SUPER ADMIN DASHBOARD</title>
+</head>
+<body>
+	<a href="{{ url_for('index') }}">Logout</a>
+
+	{% if websites %}
+	    <table style="width:100%">
+		  <tr>
+		  	<th>Sr. No</th>
+		    <th>Name</th>
+		    <th>Email</th> 
+		    <th>Document</th>
+		    <th>Approve</th>
+		    <th>Delete</th>
+		  </tr>
+		  {% set count = 1 %}
+		  {% for website in websites %}
+		  	<tr>
+		  	<td>{{ count }}</td>
+		  	<td>{{ website.name }}</td>
+		    <td>{{ website.admin.email }}</td>
+		    <td><a href="{{ website.verification_doc_url }}">View</a></td>
+		    <td><a href="{{ url_for('approve') }}?wid={{ website.id }}">Approve</a></td>
+		    <td><a href="#">Delete</a></td>
+		    {% set count = count + 1 %}
+			</tr>
+		  {% endfor %}
+		</table>
+	{% endif %}
+</body>
+</html>

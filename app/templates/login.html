@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <p>login.html</p>
+
+    <form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend> Log In </legend>
+					{{ form.email.label(class="form-control-label") }}
+					{% if form.email.errors %}
+						{{ form.email(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.email(class="form-control form-control-lg") }}
+					{% endif %}
+					<br>
+					{{ form.password.label(class="form-control-label") }}
+					{% if form.password.errors %}
+						{{ form.password(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.password.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.password(class="form-control form-control-lg") }}
+					{% endif %}
+
+					<br>
+
+					{{ form.remember_me(class="form-check-input") }}
+					{{ form.remember_me.label(class="form-check-label") }}
+			</fieldset>
+			<div class="form-group">
+					{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>
+
+		<div class="border-top pt-3">
+		<small class="text-muted">
+			New User? <a class="ml-2" href="{{ url_for('register') }}"> Click to Register! </a>
+		</small>
+{% endblock %}

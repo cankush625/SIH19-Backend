@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <p>register.html</p>
+
+    <div class="content-section">
+		<form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend> Sign Up </legend>
+
+					{{ form.name.label(class="form-control-label") }}
+
+					{% if form.name.errors %}
+						{{ form.name(class="form-control form-control-lg is-invalid") }}
+
+						{% for error in form.name.errors %}
+							<span style="color: red;">{{ error }}</span>
+						{% endfor %}
+			
+					{% else %}
+						{{ form.name(class="form-control form-control-lg") }}
+					{% endif %}
+					
+				<br>
+					{{ form.email.label(class="form-control-label") }}
+					{% if form.email.errors %}
+						{{ form.email(class="form-control form-control-lg is-invalid") }}
+						
+							{% for error in form.email.errors %}
+								<span style="color: red;">{{ error }}</span>
+							{% endfor %}
+						
+					{% else %}
+						{{ form.email(class="form-control form-control-lg") }}
+					{% endif %}
+				<br>
+
+					{{ form.phone_number.label(class="form-control-label") }}
+					{% if form.phone_number.errors %}
+						{{ form.phone_number(class="form-control form-control-lg is-invalid") }}
+						
+							{% for error in form.phone_number.errors %}
+								<span style="color: red;">{{ error }}</span>
+							{% endfor %}
+						
+					{% else %}
+						{{ form.phone_number(class="form-control form-control-lg") }}
+					{% endif %}
+
+
+				<br>
+				
+					{{ form.password.label(class="form-control-label") }}
+					{% if form.password.errors %}
+						{{ form.password(class="form-control form-control-lg is-invalid") }}
+						
+							{% for error in form.password.errors %}
+								<span style="color: red;">{{ error }}</span>
+							{% endfor %}
+						
+					{% else %}
+						{{ form.password(class="form-control form-control-lg") }}
+					{% endif %}
+				<br>
+					{{ form.confirm_password.label(class="form-control-label") }}
+					{% if form.confirm_password.errors %}
+						{{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+						
+							{% for error in form.confirm_password.errors %}
+								<span style="color: red;">{{ error }}</span>
+							{% endfor %}
+						
+					{% else %}
+						{{ form.confirm_password(class="form-control form-control-lg") }}
+					{% endif %}
+			</fieldset>
+			<div class="form-group">
+					{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>
+	</div>
+	<div class="border-top pt-3">
+		<small class="text-muted">
+			Already have an account? <a class="ml-2" href="{{ url_for('login') }}"> Sign in </a>
+		</small>
+	</div>
+{% endblock %}
